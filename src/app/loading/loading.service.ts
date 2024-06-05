@@ -11,6 +11,10 @@ export class LoadingService {
   // Exponha o BehaviorSubject como um Observable, para que outras partes do aplicativo possam se inscrever nele.
   loading$: Observable<boolean> = this.loadingSubject.asObservable();
 
+  constructor() {
+    console.log("Loading service created...")
+  }
+
   // Este método será implementado para mostrar o loader até que um Observable seja concluído.
   showLoaderUntilCompleted<T>(obs$: Observable<T>): Observable<T> {
      

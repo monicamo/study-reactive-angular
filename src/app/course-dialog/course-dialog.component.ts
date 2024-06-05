@@ -9,7 +9,8 @@ import { LoadingService } from '../loading/loading.service';
 @Component({
     selector: 'course-dialog',
     templateUrl: './course-dialog.component.html',
-    styleUrls: ['./course-dialog.component.css']
+    styleUrls: ['./course-dialog.component.css'],
+    providers: [ LoadingService ]
 })
 export class CourseDialogComponent implements AfterViewInit {
 
@@ -51,7 +52,9 @@ export class CourseDialogComponent implements AfterViewInit {
       const changes = this.form.value;
 
       // Chama o serviço para salvar as mudanças no curso
-      this.coursesService.saveCourse(this.course.id, changes)
+      const saveCourse$ = this.coursesService.saveCourse(this.course.id, changes);
+
+      this.loadingService.showLoaderUntilCompleted(saveCourse$)
         .subscribe(
           val => {
             // Se a operação for bem-sucedida, Fecha o diálogo e passa o valor de retorno
