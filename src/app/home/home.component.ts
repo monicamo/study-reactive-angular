@@ -5,6 +5,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {CourseDialogComponent} from '../course-dialog/course-dialog.component';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { LoadingService } from '../loading/loading.service';
 
 
 @Component({
