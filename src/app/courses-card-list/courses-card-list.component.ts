@@ -30,11 +30,12 @@ export class CoursesCardListComponent {
     dialogConfig.data = course;
 
     const dialogRef = this.dialog.open(CourseDialogComponent, dialogConfig);
-
+    
+    // Reage ao fechamento do diálogo
     dialogRef.afterClosed()
     .pipe(
-      filter(val => !!val),
-      tap(() => this.coursesChanged.emit())
+      filter(val => !!val), // Filtra valores nulos ou indefinidos
+      tap(() => this.coursesChanged.emit()) // Emite um evento indicando que os cursos foram alterados
     )
     .subscribe();
   }
